@@ -14,6 +14,7 @@
 		50B1017020167A3A00409446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B1016F20167A3A00409446 /* Assets.xcassets */; };
 		50B1017320167A3A00409446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50B1017120167A3A00409446 /* LaunchScreen.storyboard */; };
 		50B1017E20167A3B00409446 /* StarWarsWikiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B1017D20167A3B00409446 /* StarWarsWikiUITests.swift */; };
+		50B101892016916C00409446 /* FilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B101882016916C00409446 /* FilmsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		50B1017920167A3B00409446 /* StarWarsWikiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarWarsWikiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B1017D20167A3B00409446 /* StarWarsWikiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsWikiUITests.swift; sourceTree = "<group>"; };
 		50B1017F20167A3B00409446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50B101882016916C00409446 /* FilmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				50B1016520167A3A00409446 /* AppDelegate.swift */,
 				50B1016720167A3A00409446 /* PeopleViewController.swift */,
+				50B101882016916C00409446 /* FilmsViewController.swift */,
 				50B1016920167A3A00409446 /* Main.storyboard */,
 				50B1016F20167A3A00409446 /* Assets.xcassets */,
 				50B1017120167A3A00409446 /* LaunchScreen.storyboard */,
@@ -204,6 +207,7 @@
 			files = (
 				50B1016820167A3A00409446 /* PeopleViewController.swift in Sources */,
 				50B1016620167A3A00409446 /* AppDelegate.swift in Sources */,
+				50B101892016916C00409446 /* FilmsViewController.swift in Sources */,
 				50B1016E20167A3A00409446 /* StarWarsWiki.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

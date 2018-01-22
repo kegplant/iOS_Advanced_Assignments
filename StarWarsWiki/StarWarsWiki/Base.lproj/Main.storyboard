@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SO4-My-LvP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Jf-B0-UEA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--People View Controller-->
+        <!--People-->
         <scene sceneID="mt9-5B-9RL">
             <objects>
                 <tableViewController id="SO4-My-LvP" customClass="PeopleViewController" customModule="StarWarsWiki" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,10 +32,58 @@
                             <outlet property="delegate" destination="SO4-My-LvP" id="Ooe-BM-mLb"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="People" id="bmw-Es-62K"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWI-cD-755" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="106"/>
+            <point key="canvasLocation" x="400.80000000000001" y="105.69715142428787"/>
+        </scene>
+        <!--Films-->
+        <scene sceneID="GDt-Ar-LBN">
+            <objects>
+                <tableViewController id="XmG-Pl-b4H" customClass="FilmsViewController" customModule="StarWarsWiki" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ME3-N1-R2x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="Q5E-8f-kXe">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q5E-8f-kXe" id="OfR-mt-Gj6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XmG-Pl-b4H" id="he1-Oq-V71"/>
+                            <outlet property="delegate" destination="XmG-Pl-b4H" id="Vkd-sZ-er4"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Films" id="tgi-Ev-HNg"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eu0-cC-wFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="835"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="XX3-qD-Ljt">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3Jf-B0-UEA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xcC-5l-aXV">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="SO4-My-LvP" kind="relationship" relationship="viewControllers" id="TlT-5s-3Qi"/>
+                        <segue destination="XmG-Pl-b4H" kind="relationship" relationship="viewControllers" id="dMJ-TB-RAr"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MCQ-1h-BA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-238.40000000000001" y="105.24737631184409"/>
         </scene>
     </scenes>
 </document>
