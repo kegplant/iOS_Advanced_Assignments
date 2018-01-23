@@ -9,62 +9,71 @@
 import UIKit
 
 class FilmsViewController: UITableViewController {
-    var films:[String]=[]
+    class Storage {
+        var array:[String]=[]
+    }
+    
+    var storage=Storage()
+    //    var people = [String]()
+    //    var apiResult=[String]()
+    var url = "https://swapi.co/api/films"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url=URL(string:"https://swapi.co/api/films")
-        let session = URLSession.shared
-        let task = session.dataTask(with: url!,completionHandler: {
-            data,response, error in
-            do{
+        StarWarsModel.Get(from:url, completionHandler:generateHandler(for: "title",storage: storage))
+    }
+    
+    func generateHandler(for attribute: String, storage: Storage)->(Data?, _ response:URLResponse?, _ error:Error?)->Void {
+        func apiHandler(data:Data?, response:URLResponse?, error:Error?)->Void{
+            // see: Swift closure expression syntax
+            do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                     if let results = jsonResult["results"] {
                         let resultsArray = results as! NSArray
-                        for result in resultsArray{
-                            let film = result as! NSDictionary
-                            self.films.append(film.value(forKey:"title") as! String)
+                        for person in resultsArray {
+                            let realPerson = person as! NSDictionary
+                            storage.array.append(realPerson.value(forKey: attribute) as! String)
                         }
-                        if let test = jsonResult["next"]{
-                            print("next exitsts")
-                                print(test as? String)
+                    }
+                    if let next = jsonResult["next"] as? String {
+                        print(next)
+                        print(storage.array.count)
+                        //CALLS ITSELF?!!!
+                        StarWarsModel.Get(from: next, completionHandler: apiHandler)
+                        DispatchQueue.main.async{
+                            self.tableView.reloadData()
                         }
+                    }else{
+                        print("cannot unwrap next")
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
+                            print(storage.array.count)
                         }
                     }
                 }
             } catch {
-                print("error: ",error)
+                print(error)
             }
-        })
-        task.resume()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        }
+        return apiHandler
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // if we return - sections we won't have any sections to put our rows in
+        return 1
     }
-    */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return the count of people in our data array
-        return films.count
+        return storage.array.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create a generic cell
+        //        let cell =
         let cell = UITableViewCell()
         // set the default cell label to the corresponding element in the people array
-        cell.textLabel?.text = films[indexPath.row]
+        cell.textLabel?.text = storage.array[indexPath.row]
         // return the cell so that it can be rendered
         return cell
     }
+    
 }
