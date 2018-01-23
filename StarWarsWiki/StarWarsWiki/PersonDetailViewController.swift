@@ -17,7 +17,21 @@ class PersonDetailViewController: UIViewController {
         personDetailLabels[1].text="Gender: \(personFromSegue!["gender"]!)"
         personDetailLabels[2].text="Birth Year: \(personFromSegue!["birth_year"]!)"
         personDetailLabels[3].text="Mass: \(personFromSegue!["mass"]!)"
-
+        let species = personFromSegue!["species"]! as! [String]
+        StarWarsModel.Get(from: species[0], completionHandler: {
+            data, response, error in
+            do {
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                    let specie = jsonResult["name"] as! String
+                    DispatchQueue.main.async {
+                        self.personDetailLabels[3].text="Specie is: \(specie)"
+                    }
+                }
+                
+            } catch {
+                print("Something went wrong")
+            }
+        })
         // Do any additional setup after loading the view.
     }
     @IBAction func backButtonPressed(_ sender: UIButton) {
