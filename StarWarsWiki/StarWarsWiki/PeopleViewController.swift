@@ -4,15 +4,15 @@
 //
 //  Created by Song on 1/22/18.
 //  Copyright © 2018 Song. All rights reserved.
-//
+// change line 39 to make it load everything
 
 import UIKit
 
 class PeopleViewController: UITableViewController {
     class Storage {
-        var array:[String]=[]
+        var array:[[String:Any]]=[]
     }
-    
+//    var dict:Dictionary?
     var storage=Storage()
 //    var people = [String]()
 //    var apiResult=[String]()
@@ -31,18 +31,19 @@ class PeopleViewController: UITableViewController {
                     if let results = jsonResult["results"] {
                         let resultsArray = results as! NSArray
                         for person in resultsArray {
-                            let realPerson = person as! NSDictionary
-                            storage.array.append(realPerson.value(forKey: attribute) as! String)
+                            let realPerson = person as! [String:Any]//NSDictionary
+                            storage.array.append(realPerson)
+//                            storage.array.append([realPerson.value(forKey: attribute) as! String)
                         }
                     }
-                    if let next = jsonResult["next"] as? String {
-                        print(next)
-                        print(storage.array.count)
-                        //CALLS ITSELF?!!!
-                        StarWarsModel.Get(from: next, completionHandler: apiHandler)
-                        DispatchQueue.main.async{
-                            self.tableView.reloadData()
-                        }
+                    if false {//let next = jsonResult["next"] as? String {
+//                        print(next)
+//                        print(storage.array.count)
+//                        //CALLS ITSELF?!!!
+//                        StarWarsModel.Get(from: next, completionHandler: apiHandler)
+//                        DispatchQueue.main.async{
+//                            self.tableView.reloadData()
+//                        }
                     }else{
                         print("cannot unwrap next")
                         DispatchQueue.main.async {
@@ -57,7 +58,15 @@ class PeopleViewController: UITableViewController {
         }
         return apiHandler
     }
-    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        performSegue(withIdentifier: "personDetailSegue", sender: indexPath)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = sender as? IndexPath {
+            let destination = segue.destination as! PersonDetailViewController
+            destination.personFromSegue = storage.array[indexPath.row]
+        }
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // if we return - sections we won't have any sections to put our rows in
         return 1
@@ -71,7 +80,8 @@ class PeopleViewController: UITableViewController {
 //        let cell =
         let cell = UITableViewCell()
         // set the default cell label to the corresponding element in the people array
-        cell.textLabel?.text = storage.array[indexPath.row]
+        cell.textLabel?.text = storage.array[indexPath.row]["name"] as! String
+        cell.accessoryType = .detailButton
         // return the cell so that it can be rendered
         return cell
     }

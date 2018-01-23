@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		509F68C52016F69700F9F887 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509F68C42016F69700F9F887 /* PersonDetailViewController.swift */; };
 		50B1016620167A3A00409446 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B1016520167A3A00409446 /* AppDelegate.swift */; };
 		50B1016820167A3A00409446 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B1016720167A3A00409446 /* PeopleViewController.swift */; };
 		50B1016B20167A3A00409446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50B1016920167A3A00409446 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		509F68C42016F69700F9F887 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 		50B1016220167A3A00409446 /* StarWarsWiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsWiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B1016520167A3A00409446 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50B1016720167A3A00409446 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				50B101882016916C00409446 /* FilmsViewController.swift */,
 				50B1018A2016A26700409446 /* backup_TableViewController.swift */,
 				50B1016920167A3A00409446 /* Main.storyboard */,
+				509F68C42016F69700F9F887 /* PersonDetailViewController.swift */,
 				50B1016F20167A3A00409446 /* Assets.xcassets */,
 				50B1017120167A3A00409446 /* LaunchScreen.storyboard */,
 				50B1017420167A3A00409446 /* Info.plist */,
@@ -216,6 +219,7 @@
 				50B101892016916C00409446 /* FilmsViewController.swift in Sources */,
 				50B1018B2016A26700409446 /* backup_TableViewController.swift in Sources */,
 				50B1018D2016B33E00409446 /* StarWarsModel.swift in Sources */,
+				509F68C52016F69700F9F887 /* PersonDetailViewController.swift in Sources */,
 				50B1016E20167A3A00409446 /* StarWarsWiki.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
